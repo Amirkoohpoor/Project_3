@@ -1,4 +1,4 @@
-Mls_Number,Lat,Long,Street,City,Province,Postal_Code,Age,Listed_By,Lot_Size,Size,Style,Taxes,Type,Walk_Score,Neighbourhood,Price,Business_Type,Property_Type,Zoning,Photo_file,Photo_url,Date posted on MLS
+Mls_Number,Lat,Long,Street,City,Province,Postal_Code,Age,Listed_By,Lot_Size,Size,Style,Taxes,Type,Walk_Score,Neighbourhood,Price,Business_Type,Property_Type,Zoning,Photo_file,Photo_url,Date_posted_MLS
 W4677360,43.683551,-79.463181,357 SILVERTHORN AVE,Toronto, Ontario ,M6M3G7,100 years,"Sutton Group Realty Systems Inc., Brokerage",25.00 x 132.91 Feet,No Data,Bungalow,"$2,115 /yr",Detached,84,Keelesdale-eglinton West,500000,,,,,,28-Jan-20
 E4651773,43.696859,-79.28264,167 AUGUST AVE,Toronto, Ontario ,M1L3N3,0-5 years,"Re/max Hallmark Realty Ltd., Brokerage",22.51 x 135.4 Feet,No Data,2-Storey,No Data,Detached,58,Oakridge,529000,,,,,,11-Dec-19
 E4678182,43.721116,-79.256326,52 LAUREL AVE,Toronto, Ontario ,M1K3J5,No Data,"Royal Lepage Signature Realty, Brokerage",32.50 x 109 Feet,No Data,Bungalow,"$2,671 /yr",Detached,60,Kennedy Park,629000,,,,,,28-Jan-20
