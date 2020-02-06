@@ -1,25 +1,57 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
+from sqlalchemy import Column, ForeignKey, Integer, String, Float
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///toronto-real-estate.db' 
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from db import Base, Real_estate
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
 
-#Connect to Database and create database session
-engine = create_engine('sqlite:///toronto-real-estate.db')
-Base.metadata.bind = engine
+class Real_estate(db.Model):
+   Mls_Number = db.Column(db.String(9), primary_key=True)
+   Lat = db.Column(db.Float, nullable=False)
+   Long = db.Column(db.Float, nullable=False)
+   Street = db.Column(db.String(100), nullable=False)
+   City = db.Column(db.String(10),nullable=False)
+   Province = db.Column(db.String(10),nullable=False)
+   Postal_Code = db.Column(db.String(10),nullable=False)
+   Age = db.Column(db.String(10))
+   Listed_By = db.Column(db.String(50))
+   Lot_Size = db.Column(db.String(50))
+   Size = db.Column(db.String(50))
+   Style = db.Column(db.String(50))
+   Taxes = db.Column(db.String(50))
+   Type = db.Column(db.String(25))
+   Walk_Score = db.Column(db.Integer)
+   Neighbourhood = db.Column(db.String(20))
+   Price = db.Column(db.Integer)
+   Business_Type = db.Column(db.String(20))
+   Property_Type = db.Column(db.String(20))
+   Zoning = db.Column(db.String(20))
+   Photo_file = db.Column(db.String(250))
+   Photo_url = db.Column(db.String(250))
+   Date_posted_MLS = db.Column(db.String(15))
 
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+class Schema(ma.ModelSchema):
+    class Meta:
+        model = Real_estate
+
 
 #landing page that will display all the postings in our database
 #This function operate on the Read operation.
-
 @app.route("/")
-def showPostings():
-   postings = session.query(Real_estate).all()
-   return render_template("index.html", postings=postings)
+def home(): 
+   return render_template("index.html")
 
+@app.route("/api/real-estate-search-results")
+def results(): 
+   postings = Real_estate.query.all()
+   schema = Schema(many=True)
+   output = schema.dump(postings).data
+   return jsonify({"posting":output})
 
 if __name__ == "__main__":
     app.run(debug=True)
