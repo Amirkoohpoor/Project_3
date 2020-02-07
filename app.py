@@ -28,10 +28,6 @@ class Real_estate(db.Model):
    Walk_Score = db.Column(db.Integer)
    Neighbourhood = db.Column(db.String(20))
    Price = db.Column(db.Integer)
-   Business_Type = db.Column(db.String(20))
-   Property_Type = db.Column(db.String(20))
-   Zoning = db.Column(db.String(20))
-   Photo_file = db.Column(db.String(250))
    Photo_url = db.Column(db.String(250))
    Date_posted_MLS = db.Column(db.String(15))
 
@@ -48,7 +44,9 @@ def home():
 
 @app.route("/api/real-estate-search-results")
 def results(): 
-   postings = Real_estate.query.all()
+   minprice = request.args.get('minprice')
+   maxprice = request.args.get('maxprice')
+   postings = Real_estate.query.filter_by(Price=maxprice).all()
    schema = Schema(many=True)
    output = schema.dump(postings).data
    return jsonify({"posting":output})
