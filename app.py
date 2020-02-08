@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-from sqlalchemy import Column, ForeignKey, Integer, String, Float
+from sqlalchemy import Column, ForeignKey, Integer, String, Float, and_
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
@@ -46,7 +46,9 @@ def home():
 def results(): 
    minprice = request.args.get('minprice')
    maxprice = request.args.get('maxprice')
-   postings = Real_estate.query.filter_by(Price=maxprice).all()
+   print(minprice)
+   print(maxprice)
+   postings = Real_estate.query.filter(Real_estate.Price <= maxprice).filter(Real_estate.Price >= minprice).all()
    schema = Schema(many=True)
    output = schema.dump(postings).data
    return jsonify({"posting":output})
