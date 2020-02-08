@@ -1,6 +1,6 @@
 var mapConfig = {
     center: [43.65, -79.38],
-    zoom: 11
+    zoom: 10
 }
 
 var tileURL = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}"
