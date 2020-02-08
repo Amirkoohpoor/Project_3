@@ -46,9 +46,11 @@ def home():
 def results(): 
    minprice = request.args.get('minprice')
    maxprice = request.args.get('maxprice')
+   wScore = request.args.get('wscore')
    print(minprice)
    print(maxprice)
-   postings = Real_estate.query.filter(Real_estate.Price <= maxprice).filter(Real_estate.Price >= minprice).all()
+   print(wScore)
+   postings = Real_estate.query.filter(Real_estate.Price <= maxprice).filter(Real_estate.Price >= minprice).filter(Real_estate.Walk_Score >= wScore).all()
    schema = Schema(many=True)
    output = schema.dump(postings).data
    return jsonify({"posting":output})

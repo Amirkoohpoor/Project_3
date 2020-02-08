@@ -31,13 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="current.html">Unfiltered Map</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="comparisons.html">Map Visualization by Price Range</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="data.html">Data</a>
+            <a class="nav-link" href="templates/data.html">Data</a>
           </li>
         </ul>
       </div>
@@ -61,23 +55,16 @@
             <div class="row" style="padding-bottom: 30px;">
               <div class="col-lg-7 col-md-12">
                 <!-- Left box  -->
-                <div class="box">
-                  <h3 class="title">Min Price</h3>
-                  <select id="selDataset"></select>
-                </div>
-                
+           
                 <div>Min Price: <input type="text" id="minprice"></div>
                 <div>Max Price: <input type="text" id="maxprice"></div>
+                <div>Walk Score: <input type="text" id="wscore"></div>
                 <button id="submit" type="button">Submit</button>
-
               </div>
-              <div class="row" style="padding-bottom: 30px;">
+              <div class="row" style="padding-bottom: 10px;">
                 <div class="col-lg-7 col-md-12">
                   <!-- Left box  -->
-                  <div class="box">
-                    <h3 class="title">Max Price</h3>
-                    <select id="selDataset"></select>
-                  </div>
+               
                 </div>  
               </div>
           </div>
@@ -86,9 +73,14 @@
     </div>
   </div>
  
-  <div id="map"></div>
-  <div style="position: relative; width: 1140px; height: 1700px;"></div>
-
+  <div class="container">
+    <div class="row" style="padding-bottom: 30px;">
+      <div class="col-lg-12 col-md-12">
+      <div id="map"></div>
+      <div style="position: relative; width: 700px; height: 500px;">
+      </div> 
+    </div>
+  </div>   
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
