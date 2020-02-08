@@ -5,5 +5,5 @@ document.getElementById("submit").onclick = () => {
     fetch(`/api/real-estate-search-results?minprice=${minPrice}&maxprice=${maxPrice}`)
     .then(response => response.json())
     .then(response => buildGraphs(response.posting))
-    .catch(err=> console.error(err.stack));
+    // .catch(err=> console.error(err.stack));
 };
