@@ -4,4 +4,5 @@ function buildDataPage(properties) {
     console.log("buildDataPage building graph to: ", d3.select("#map"));
 
     d3.select("#fmap");  
+
 }
