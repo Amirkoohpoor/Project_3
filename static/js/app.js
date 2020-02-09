@@ -28,9 +28,8 @@ function house_data(h_data)
   // Create a layer group made from the bike markers array, pass it into the createMap function
   //createMap(L.layerGroup(houseMarkers));   
     //d3.json(data, createMarkers);
-    
-var geoJSONurl = 'static/data/Data.geojson'
 
+var geoJSONurl = 'static/data/Data.geojson'
 
 var mapConfig = {
     center: [43.65, -79.38],
@@ -83,9 +82,7 @@ d3.json(geoJSONurl, function(data) {
                 layer.bindPopup("<h1>" + feature.properties.AREA_DESC + "</h1><hr><h2>" + feature.properties.AREA_TYPE + "</h2>");
         }
     }).addTo(map);
-})
-
-
+});
 
 }
 
@@ -94,4 +91,3 @@ if(window.addEventListener) {
 } else {
     window.attachEvent('onload',load_house); //IE
 }
-
