@@ -42,6 +42,10 @@ class Schema(ma.ModelSchema):
 def home(): 
    return render_template("index.html")
 
+@app.route("/data")
+def fdata(): 
+   return render_template("data.html")
+
 @app.route("/api/real-estate-search-results")
 def results(): 
    minprice = request.args.get('minprice')
@@ -50,10 +54,23 @@ def results():
    print(minprice)
    print(maxprice)
    print(wScore)
-   postings = Real_estate.query.filter(Real_estate.Price <= maxprice).filter(Real_estate.Price >= minprice).filter(Real_estate.Walk_Score >= wScore).all()
+
+   postings = Real_estate.query
+   
+   if maxprice is not None:
+      postings = postings.filter(Real_estate.Price <= maxprice)
+      
+   if minprice is not None:
+      postings = postings.filter(Real_estate.Price >= minprice)
+
+   if wScore is not None: 
+      postings = postings.filter(Real_estate.Walk_Score >= wScore)
+   
+   postings = postings.all()
    schema = Schema(many=True)
    output = schema.dump(postings).data
    return jsonify({"posting":output})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
