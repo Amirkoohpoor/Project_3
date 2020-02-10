@@ -86,9 +86,6 @@ def house_all():
    output = schema.dump(postings).data
    return jsonify({"posting":output})
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -165,15 +165,14 @@ function load_house(){
     "<p class='high'>75 <= Walk Score < 100: " + houseCount.walkScore_above_75 + "</p>"
   ].join("");
   }
-  
-  
+   
+
 
 
 // var mapConfig = {
 //     center: [43.65, -79.38],
 //     zoom: 10
 // }
-
 // var tileURL = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}"
 
 // var tileConfig = {
@@ -224,3 +223,10 @@ function load_house(){
 //         }
 //     }).addTo(map);
 // });
+
+if(window.addEventListener) {
+    window.addEventListener('load', load_house,false); //W3C
+} else {
+    window.attachEvent('onload',load_house); //IE
+}
+
