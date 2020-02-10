@@ -10,9 +10,17 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+  
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
 
   <!--CSS Link-->
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
 </head>
 
@@ -32,25 +40,36 @@
       <hr>
       <p>The following table includes all of the data used for plotting during this project.</p>
       <br>
+      <div class="container">
+        <div class="row" style="padding-bottom: 30px;">
+          <div class="col-lg-12 col-md-12">
+          <div id="fmap"></div>
+          <div style="position: relative; width: 700px; height: 500px;">
+          </div> 
+        </div>
+      </div> 
       <div class="table-responsive" style="overflow-x:auto; overflow-y:auto; max-height:470px; max-width: auto;">
         <table class="table table-striped">
           <thead>
             <tr>
               <th title="Field #1">MLS Number</th>
               <th title="Field #2">Latitude</th>
-              <th title="Field #3">Longitude.</th>
+              <th title="Field #3">Longitude</th>
               <th title="Field #4">Street</th>
               <th title="Field #5">City</th>
               <th title="Field #6">Postal Code</th>
               <th title="Field #7">Walk Score</th>
               <th title="Field #8">Price</th>
               <th title="Field #9">Photo url</th>
-              <th title="Field #10">..</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
             
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -59,7 +78,12 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script type="text/javascript" src="static/js/graphs.js"></script>
+  <!--D3 Link-->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript" src="static/js/build_data_page.js"></script>
+  <script src="static/js/data.js"></script>
+  <script src="static/js/crime.js"></script>
+
 </body>
 
 </html>

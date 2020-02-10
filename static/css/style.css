@@ -8,3 +8,41 @@ body {
   html {
     height: 100%;
   }
+  #fmap,
+  body,
+  html {
+    height: 100%;
+  }
+  .leaflet-popup-content {
+    max-width: auto;
+    height: auto;
+    overflow-y: scroll;
+    color: aqua;
+    font-size: xx-small;
+    line-height: normal;
+    background:black;
+    font-weight: lighter;
+}
+/* .custom-popup .leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #2c3e50;
+  } */
+  /* .custom-popup .leaflet-popup-content-wrapper {
+    background: #000000;
+    columns: pink;
+    font-size:16px;
+    line-height:24px;
+    }
+  .custom-popup .leaflet-popup-content-wrapper a {
+    color:rgba(255,255,255,0.5);
+    }
+  .custom-popup .leaflet-popup-tip-container {
+    width:30px;
+    height:15px;
+    }
+  .custom-popup .leaflet-popup-tip {
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:15px solid #2c3e50;
+    } */

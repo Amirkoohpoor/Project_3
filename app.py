@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 from sqlalchemy import Column, ForeignKey, Integer, String, Float, and_
 from flask_sqlalchemy import SQLAlchemy
@@ -42,6 +43,16 @@ class Schema(ma.ModelSchema):
 def home(): 
    return render_template("index.html")
 
+@app.route("/data")
+def fdata(): 
+   return render_template("data.html")
+
+@app.route('/crime')
+def crimes():
+   response = requests.get("https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/MCI_2014_to_2018/FeatureServer/0/query?where=1%3D1&outFields=*&geometry=-79.473%2C43.723%2C-79.419%2C43.733&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=4326&f=json")
+   response_json=response.json()
+   return jsonify(response_json)
+
 @app.route("/api/real-estate-search-results")
 def results(): 
    minprice = request.args.get('minprice')
@@ -50,10 +61,23 @@ def results():
    print(minprice)
    print(maxprice)
    print(wScore)
-   postings = Real_estate.query.filter(Real_estate.Price <= maxprice).filter(Real_estate.Price >= minprice).filter(Real_estate.Walk_Score >= wScore).all()
+
+   postings = Real_estate.query
+   
+   if maxprice is not None:
+      postings = postings.filter(Real_estate.Price <= maxprice)
+      
+   if minprice is not None:
+      postings = postings.filter(Real_estate.Price >= minprice)
+
+   if wScore is not None: 
+      postings = postings.filter(Real_estate.Walk_Score >= wScore)
+   
+   postings = postings.all()
    schema = Schema(many=True)
    output = schema.dump(postings).data
    return jsonify({"posting":output})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
