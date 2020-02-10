@@ -78,6 +78,17 @@ def results():
    output = schema.dump(postings).data
    return jsonify({"posting":output})
 
+#mugu added
+@app.route("/api/house-full-list")
+def house_all():
+   postings = Real_estate.query.filter().all() #(Real_estate.Mls_Number,Real_estate.Lat, Real_estate.Long, Real_estate.Style, Real_estate.Walk_Score).all()
+   schema = Schema(many=True)
+   output = schema.dump(postings).data
+   return jsonify({"posting":output})
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
