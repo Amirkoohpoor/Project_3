@@ -8,5 +8,5 @@ document.getElementById("submit").onclick = () => {
     var maxPrice = document.getElementById("maxprice").value;
     var wScore = document.getElementById("wscore").value;
 
-    window.location.href = `data?minprice=${minPrice}&maxprice=${maxPrice}&wscore=${wScore}`;
+    window.location.href = `/data?minprice=${minPrice}&maxprice=${maxPrice}&wscore=${wScore}`;
 };
