@@ -98,8 +98,8 @@ function load_house(){
       shape: "circle"
     })
   };
-    // Pull the "stations" property off of response.data
-    console.log(response);
+    // Pull the "house" property off of response.data
+    //console.log(response);
     var houses = response;
   
     // Initialize an array to hold bike markers
@@ -113,10 +113,10 @@ function load_house(){
       walkScore_above_75: 0,
     };
   
-    // Initialize a stationStatusCode, which will be used as a key to access the appropriate layers, icons, and station count for layer group
+    // Initialize a stationStatusCode, which will be used as a key to access the appropriate layers, icons, and house count for layer group
     var housePriceCode;
   
-    // Loop through the stations array
+    // Loop through the houses array
     for (var index = 0; index < houses.length; index++) {
       var house = houses[index];
       if(parseFloat(house['Walk_Score']) < 25){
@@ -224,9 +224,9 @@ function load_house(){
 //     }).addTo(map);
 // });
 
-if(window.addEventListener) {
-    window.addEventListener('load', load_house,false); //W3C
-} else {
-    window.attachEvent('onload',load_house); //IE
-}
+// if(window.addEventListener) {
+//     window.addEventListener('load', load_house,false); //W3C
+// } else {
+//     window.attachEvent('onload',load_house); //IE
+// }
 
