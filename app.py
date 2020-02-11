@@ -49,7 +49,7 @@ def fdata():
 
 @app.route('/crime')
 def crimes():
-   response = requests.get("https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/MCI_2014_to_2018/FeatureServer/0/query?where=1%3D1&outFields=*&geometry=-79.473%2C43.723%2C-79.419%2C43.733&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=4326&f=json")
+   response = requests.get("https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/MCI_2014_to_2018/FeatureServer/0/query?where=1%3D1&outFields=*&geometry=-79.473%2C43.723%2C-79.419%2C43.733&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=4326&f=geojson")
    response_json=response.json()
    return jsonify(response_json)
 
@@ -63,14 +63,14 @@ def results():
    print(wScore)
 
    postings = Real_estate.query
+
+   if minprice != None or "":
+      postings = postings.filter(Real_estate.Price >= minprice)
    
-   if maxprice is not None:
+   if maxprice != None or "":
       postings = postings.filter(Real_estate.Price <= maxprice)
       
-   if minprice is not None:
-      postings = postings.filter(Real_estate.Price >= minprice)
-
-   if wScore is not None: 
+   if wScore != None or "":
       postings = postings.filter(Real_estate.Walk_Score >= wScore)
    
    postings = postings.all()

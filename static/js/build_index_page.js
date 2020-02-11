@@ -124,7 +124,7 @@ function buildIndexPage(properties) {
         // var newMarker = L.marker([house['Lat'], house['Long']], {
         //   icon: icons[housePriceCode]
         // });
-        console.log(newMarker)
+        // console.log(newMarker)
         // Add the new marker to the appropriate layer
         newMarker.addTo(layers[housePriceCode]);
     
