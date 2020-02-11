@@ -63,14 +63,14 @@ def results():
    print(wScore)
 
    postings = Real_estate.query
+
+   if minprice != None or "":
+      postings = postings.filter(Real_estate.Price >= minprice)
    
-   if maxprice is not None:
+   if maxprice != None or "":
       postings = postings.filter(Real_estate.Price <= maxprice)
       
-   if minprice is not None:
-      postings = postings.filter(Real_estate.Price >= minprice)
-
-   if wScore is not None: 
+   if wScore != None or "":
       postings = postings.filter(Real_estate.Walk_Score >= wScore)
    
    postings = postings.all()
