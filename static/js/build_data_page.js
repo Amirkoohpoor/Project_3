@@ -6,7 +6,8 @@ function buildDataPage(properties) {
         .append("tr")
         .html(d => `<td>${d.Mls_Number}</td><td>${d.Lat}</td><td>${d.Long}</td>
         <td>${d.Street}</td><td>${d.City}</td><td>${d.Postal_Code}</td>
-        <td>${d.Walk_Score}</td><td>$${d.Price}</td><td> <a href=${d.Photo_url}>${d.Photo_url}</a></td>`);
+        <td>${d.Walk_Score}</td><td>$${d.Price}</td>
+        <td><a href="${d.Photo_url}" target="_blank"><img src="${d.Photo_url}" width="100"></a></td>`);
 
     var mapConfig = {
         center: [43.65, -79.38],
